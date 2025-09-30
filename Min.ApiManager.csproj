@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- 指定目标框架，这里是 .NET 8 -->
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<LangVersion>12.0</LangVersion>
+
+		<!-- 启用隐式 using（自动引入常见命名空间，如 System, System.Linq 等） -->
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!-- 启用可空引用类型检查（帮助避免 NullReferenceException） -->
+		<Nullable>enable</Nullable>
+		<!-- 是否对程序集进行签名，这里关闭 -->
+		<SignAssembly>False</SignAssembly>
+
+		<!-- NuGet 包的标题 -->
+		<Title>Min.ApiManager</Title>
+		<!-- 编译时自动生成 NuGet 包 -->
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<!-- NuGet 包的唯一 ID -->
+		<PackageId>Min.ApiManager</PackageId>
+		<!-- NuGet 包版本号 -->
+		<Version>1.0.0</Version>
+		<!-- 作者信息 -->
+		<Authors>于晟</Authors>
+		<!-- 公司信息 -->
+		<Company>mindev.cn</Company>
+		<!-- 包的描述信息，发布到 NuGet 时会显示 -->
+		<Description> 一个用于管理 API 地址的轻量级 .NET 类库，支持多环境配置、动态路由管理和智能端点构建。</Description>
+		<!-- 包的标签，用于 NuGet 搜索 -->
+		<PackageTags>ApiManager;API;Http;Manager;Min;Min.ApiManager;于晟;</PackageTags>
+		<!-- 许可证类型，这里使用 MIT 开源许可证 -->
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<!-- 仓库地址（GitHub/GitLab），NuGet 页面会展示跳转 -->
+		<RepositoryUrl>https://github.com/mindevcn/Min.ApiManager</RepositoryUrl>
+		<!-- 仓库类型，这里是 git -->
+		<RepositoryType>git</RepositoryType>
+		<!-- 是否需要在安装 NuGet 包时接受许可证，这里不需要 -->
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<!-- 发布时包含仓库地址（对 SourceLink 有用） -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!-- 将未被追踪的源文件嵌入到 PDB 文件中（方便调试） -->
+		<EmbedUntrackedSources>False</EmbedUntrackedSources>
+
+		<!-- 包的主页，NuGet 页面会显示“项目网站”按钮 -->
+		<PackageProjectUrl>https://mindev.cn/Min.ApiManager</PackageProjectUrl>
+
+		<!-- 包的图标（推荐 64x64 PNG），需要放在项目里，并且标记为 Content -->
+		<PackageIcon>icon.png</PackageIcon>
+
+		<!-- 包的更新日志，NuGet 页面会展示 -->
+		<PackageReleaseNotes>1.0.0 初始版本，支持 API 地址管理。</PackageReleaseNotes>
+
+		<!-- 发布时附带 README.md（NuGet Gallery 会直接显示） -->
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<!-- 符号包配置 -->
+		<!-- <IncludeSymbols>true</IncludeSymbols> -->
+
+	</PropertyGroup>
+
+	<!-- Debug 模式的编译配置 -->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<!-- 调试符号类型，portable = 跨平台调试符号 -->
+		<DebugType>portable</DebugType>
+		<!-- 是否兼容 AOT（提前编译），这里禁用 -->
+		<IsAotCompatible>False</IsAotCompatible>
+		<!-- 是否支持裁剪程序集，False 表示不支持 -->
+		<IsTrimmable>False</IsTrimmable>
+	</PropertyGroup>
+
+	<!-- Release 模式的编译配置 -->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<!-- 调试符号嵌入到程序集，方便发布后调试 -->
+		<DebugType>embedded</DebugType>
+		<!-- 是否兼容 AOT（提前编译），这里禁用 -->
+		<IsAotCompatible>false</IsAotCompatible>
+		<!-- 是否支持裁剪程序集，False 表示不支持 -->
+		<IsTrimmable>false</IsTrimmable>
+	</PropertyGroup>
+
+	<!-- 引入 SourceLink GitHub 支持 -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="*" PrivateAssets="All" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="icon.png" Pack="true" PackagePath="\" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>
