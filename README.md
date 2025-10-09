@@ -3,7 +3,7 @@
 [![NuGet Version](https://img.shields.io/nuget/v/Min.ApiManager.svg)](https://www.nuget.org/packages/Min.ApiManager/)
 [![.NET](https://img.shields.io/badge/.NET-6.0%20%7C%207.0%20%7C%208.0-blue.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-mindev/Min.ApiManager-blue.svg)](https://github.com/mindev99/Min.ApiManager)
+[![GitHub](https://img.shields.io/badge/GitHub-Min.ApiManager-blue.svg)](https://github.com/mindev99/Min.ApiManager)
 
 💡 一个用于管理 API 地址的轻量级 .NET 类库，支持多环境配置、动态路由管理和智能端点构建。
 
@@ -60,22 +60,18 @@ Min.ApiManager/
 
 ### 🌳 环境管理
 支持以下环境类型：
-| 🌱 环境类型       | 📝 描述      |
-| ------------- | ---------- |
-| `Development` | 本地开发环境     |
-| `Testing`     | 测试/QA环境    |
-| `UAT`         | 用户验收测试环境   |
-| `Staging`     | 预发布/模拟生产环境 |
-| `Sandbox`     | 沙箱环境       |
-| `Production`  | 生产环境       |
+* 🧩 **Development**：本地开发环境
+* 🧪 **Testing**：测试 / QA 环境
+* 🧭 **UAT**：用户验收测试环境
+* 🚀 **Staging**：预发布 / 模拟生产环境
+* 🧱 **Sandbox**：沙箱环境（隔离实验用途）
+* 🏭 **Production**：正式生产环境
 
 ### 🔧 配置格式
 支持三种配置格式：
-| 🛠 格式 | 📝 描述                     |
-| ------ | -------------------------- |
-| JSON   | 结构化配置，易于阅读和编辑 |
-| XML    | 传统配置格式               |
-| INI    | 简单键值对格式             |
+* 📄 **JSON**：结构化配置，易于阅读与编辑
+* 🗂️ **XML**：传统格式，兼容性强，适合企业级项目
+* 🧾 **INI**：轻量级键值对配置，简单直接
 
 #### 🟨 JSON 配置
 

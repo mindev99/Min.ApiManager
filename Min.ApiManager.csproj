@@ -19,7 +19,7 @@
 		<!-- NuGet 包的唯一 ID -->
 		<PackageId>Min.ApiManager</PackageId>
 		<!-- NuGet 包版本号 -->
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<!-- 作者信息 -->
 		<Authors>于晟</Authors>
 		<!-- 公司信息 -->
@@ -31,31 +31,33 @@
 		<!-- 许可证类型，这里使用 MIT 开源许可证 -->
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<!-- 仓库地址（GitHub/GitLab），NuGet 页面会展示跳转 -->
-		<RepositoryUrl>https://github.com/mindevcn/Min.ApiManager</RepositoryUrl>
+		<RepositoryUrl>https://github.com/mindev99/Min.ApiManager</RepositoryUrl>
 		<!-- 仓库类型，这里是 git -->
 		<RepositoryType>git</RepositoryType>
 		<!-- 是否需要在安装 NuGet 包时接受许可证，这里不需要 -->
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<!-- 发布时包含仓库地址（对 SourceLink 有用） -->
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PublishRepositoryUrl>False</PublishRepositoryUrl>
+		<!-- 符号包配置 -->
+		<IncludeSymbols>False</IncludeSymbols>
 		<!-- 将未被追踪的源文件嵌入到 PDB 文件中（方便调试） -->
 		<EmbedUntrackedSources>False</EmbedUntrackedSources>
 
 		<!-- 包的主页，NuGet 页面会显示“项目网站”按钮 -->
-		<PackageProjectUrl>https://mindev.cn/Min.ApiManager</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/mindev99/Min.ApiManager</PackageProjectUrl>
 
 		<!-- 包的图标（推荐 64x64 PNG），需要放在项目里，并且标记为 Content -->
 		<PackageIcon>icon.png</PackageIcon>
 
 		<!-- 包的更新日志，NuGet 页面会展示 -->
-		<PackageReleaseNotes>1.0.0 初始版本，支持 API 地址管理。</PackageReleaseNotes>
+		<PackageReleaseNotes>1.1.0 支持 API 多环境地址管理、动态路由管理、端点构建等。</PackageReleaseNotes>
 
 		<!-- 发布时附带 README.md（NuGet Gallery 会直接显示） -->
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 
 		<!-- 符号包配置 -->
 		<!-- <IncludeSymbols>true</IncludeSymbols> -->
-
+<!---->
 	</PropertyGroup>
 
 	<!-- Debug 模式的编译配置 -->
@@ -80,12 +82,24 @@
 
 	<!-- 引入 SourceLink GitHub 支持 -->
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="*" PrivateAssets="All" />
+		<!-- <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*" PrivateAssets="All" /> -->
 	</ItemGroup>
 
 	<PropertyGroup>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
+	  <DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+	  <DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
